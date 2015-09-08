@@ -357,7 +357,9 @@
 
   function noop() {}
 
-  main(window.iosDragDropShim);
+  // Set iosDragDropShim = { enableEnterLeave: true } without lusing a global.
+  var iosDragDropShim = { enableEnterLeave: true }
 
+  main(iosDragDropShim);
 
 })(document);
