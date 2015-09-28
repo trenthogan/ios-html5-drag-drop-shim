@@ -71,6 +71,7 @@
       }
     },
     move: function(event) {
+      event.preventDefault();
       var pageXs = [], pageYs = [];
       [].forEach.call(event.changedTouches, function(touch) {
         pageXs.push(touch.pageX);
@@ -227,9 +228,9 @@
     },
     createDragImage: function() {
       this.dragImage = this.el.cloneNode(true);
-      
+
       duplicateStyle(this.el, this.dragImage);
-      
+
       this.dragImage.style.opacity = "0.5";
       this.dragImage.style.position = "absolute";
       this.dragImage.style.left = "0px";
@@ -275,7 +276,7 @@
           el.dispatchEvent(clickEvt);
           log("Simulating click to anchor");
         }
-        evt.preventDefault();
+        //evt.preventDefault();
         new DragDrop(evt,el);
       }
     } while((el = el.parentNode) && el !== doc.body);
