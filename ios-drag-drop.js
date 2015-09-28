@@ -71,7 +71,6 @@
       }
     },
     move: function(event) {
-      event.preventDefault();
       var pageXs = [], pageYs = [];
       [].forEach.call(event.changedTouches, function(touch) {
         pageXs.push(touch.pageX);
@@ -264,7 +263,7 @@
   function touchstart(evt) {
     var el = evt.target;
     do {
-      if (el.draggable === true) {
+      if (el.draggable === true && el.hasAttribute("ios-drag-drop")) {
         // If draggable isn't explicitly set for anchors, then simulate a click event.
         // Otherwise plain old vanilla links will stop working.
         // https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Touch_events#Handling_clicks
@@ -276,7 +275,7 @@
           el.dispatchEvent(clickEvt);
           log("Simulating click to anchor");
         }
-        //evt.preventDefault();
+        evt.preventDefault();
         new DragDrop(evt,el);
       }
     } while((el = el.parentNode) && el !== doc.body);
@@ -360,7 +359,7 @@
 
   // Set iosDragDropShim = { enableEnterLeave: true } without lusing a global.
   var iosDragDropShim = { enableEnterLeave: true }
-
   main(iosDragDropShim);
+
 
 })(document);
