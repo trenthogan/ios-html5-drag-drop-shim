@@ -275,7 +275,7 @@
           el.dispatchEvent(clickEvt);
           log("Simulating click to anchor");
         }
-        evt.preventDefault();
+        //evt.preventDefault();
         new DragDrop(evt,el);
       }
     } while((el = el.parentNode) && el !== doc.body);
